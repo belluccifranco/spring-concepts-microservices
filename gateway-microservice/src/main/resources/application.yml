@@ -1,6 +1,22 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: gateway-microservice
-
-server:
-  port: 8080
+  cloud:
+    gateway:
+      discovery.locator.enabled: true
+      routes:
+        - id: register-microservice
+          uri: lb://register-microservice
+          predicates:
+            - Path=/register/**
+        - id: berlin-microservice
+          uri: lb://berlin-microservice
+          predicates:
+            - Path=/berlin/**
+        - id: tokio-microservice
+          uri: lb://tokio-microservice
+          predicates:
+            - Path=/tokio/**

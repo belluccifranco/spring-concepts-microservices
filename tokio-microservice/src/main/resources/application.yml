@@ -1,6 +1,8 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /tokio
+
 spring:
   application:
     name: tokio-microservice
-
-server:
-  port: 8082

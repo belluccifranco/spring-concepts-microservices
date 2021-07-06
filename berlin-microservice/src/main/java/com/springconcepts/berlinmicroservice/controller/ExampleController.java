@@ -18,7 +18,7 @@ public class ExampleController {
 
     @GetMapping("/hello")
     public String sayHelloWorld() {
-        for (int i = 1; i < 20; i++) {
+        for (var i = 1; i < 20; i++) {
             producer.send(new SampleMessage(i, "A simple test message"));
         }
         return "Hello World!";
