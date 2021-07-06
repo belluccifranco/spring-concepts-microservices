@@ -1,1 +1,76 @@
-<mxfile host="app.diagrams.net" modified="2021-06-11T21:03:07.207Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="qTo1GGBtAYUte1q1Cmfu" version="14.7.6" type="github"><diagram id="KAYoFOVoinrggncDsqFn" name="Microservices">1Vlbc6IwFP41zuw+1AHCzUet1s6u7tq63ctjhBRSI3FCvNBfv0HCTdBqp146Ppjz5SSE71yBBridrfsMzv0hdRFpaIq7boBuQ9NUw1DEX4xECWLbdgJ4DLtSKQfG+BVJUK7zFthFYUmRU0o4npdBhwYBcngJg4zRVVntmZLyVefQQxVg7EBSRf9gl/sSVc1WPnGPsOfLS9ualUzMYKos7yT0oUtXBQj0GuCWUcqT0Wx9i0hMXspLsu5ux2x2MIYCfsiCh7b14/HhNfwedrp9RzFHv/vKjZ7ssoRkIW9YHpZHKQOMLgIXxZsoDdBZ+Zij8Rw68exK2FxgPp8RIaliWD2UPOcSMY7WBUgeso/oDHEWCZV0NjW99BjVlPIq599KSfUL1BtAglDa3Mv2zmkRA8lMPUsD8Dgc9u4pHS5fvrWtp/un5fTGrpCCXOElUqSM+9SjASS9HO2Uact1BpTOJVkviPNIujxccFqmMuSQ8XbswgJwCAxD7KTwHSZvMi70PMT33JV01PhW9tqFIQI5XpYDoo5juXREsThKZk8NGCV76srWFiFdMAfJVVuWyo7xfuOl7nSV1kNrzP/GV2lahhT/Faa6a3mCjRBJYafJEyb3cXEekwPFLpncVFvlLRLfPJ3JwRWb/Oqtp1nlgNUs/bzWq9SkDmIEBwIbYofRELElFkRpJhEEdiZMjLx49GUurCa0bMVWv+6pY+pZ6pi2VceAXq1jKqipY+apypiqXyIsBIMsSnKcbuspsMlyTRGoUs4z3UaKitIIMSwYQEyCJw807cAKCj46IA81b20vp17EulkB0xSzWMGaiuiE91WxWNi2bO4rRT9RmoZlf2pHMc+TufX04SOtu9sd8Y7MLSiCUUFtHiuEh19HN7cePY7TF4PkBO8tI7XhUH2SOW+yM0ou/B73zWPLVlrl2EoS51GxdTXBYFwqa+47daHb+EWnmB7TbGiXbzZ05dqaDVDh9RF5OIz9cZtaJePSMq+gccteOKT9L6hyadZxqZ+KS6PC5ZAGXuyj3U6FrtCH83joRKJndhEDb5M2SRgeTDIAOlNvw/vPBRfbIImHSd5TjQ/yWqvMtG7XvOqpIdo+FdFmhejv8HkKL8Yxo1ykQBoIuRXncAIniIxoiCXoCO7jBN+JOceOKFRbCjPsupvKBgn2ale05USm6VOGX2nAIWm88brhCEMb5UdKUBNSel120k5laasaUtH4YfCZo0lTriya1Gpt7UOOVptec1cJEL/rKwFq63QlQIj5R4Ck+c0/pYDefw==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-07-06T18:44:46.603Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" etag="hv9Y7LhCOJeZnkNN-YuT" version="14.8.3" type="github">
+  <diagram id="KAYoFOVoinrggncDsqFn" name="Microservices">
+    <mxGraphModel dx="1550" dy="888" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="QA7NRQzsKsBDGc06PVG0-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="110" y="160" width="720" height="530" as="geometry" />
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" parent="1" target="L3RMMEHooMvjJA7UHUvk-7" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="235" y="401" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="1" source="L3RMMEHooMvjJA7UHUvk-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="308" y="619" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" parent="1" source="L3RMMEHooMvjJA7UHUvk-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="275" y="274" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-1" value="Berlin Microservice&lt;br&gt;(port 8081)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="210" y="340" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.484;entryY=1.13;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" parent="1" source="L3RMMEHooMvjJA7UHUvk-2" target="L3RMMEHooMvjJA7UHUvk-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QA7NRQzsKsBDGc06PVG0-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.206;exitY=1.027;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.578;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" parent="1" source="L3RMMEHooMvjJA7UHUvk-2" target="L3RMMEHooMvjJA7UHUvk-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="427" y="630" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="427" y="460" />
+              <mxPoint x="427" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QA7NRQzsKsBDGc06PVG0-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.809;exitY=1.013;exitDx=0;exitDy=0;exitPerimeter=0;startArrow=classic;startFill=1;" parent="1" source="L3RMMEHooMvjJA7UHUvk-2" target="L3RMMEHooMvjJA7UHUvk-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-2" value="Tokio Microservice&lt;br&gt;(port 8082)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="400" y="340" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-3" value="Register Microservice (port 8761)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="160" y="230" width="630" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-5" value="Mongo DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="470" y="480" width="70" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-6" value="Kafka" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=90;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;horizontal=0;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="455" y="330" width="40" height="620" as="geometry" />
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-7" value="MySQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="200" y="480" width="70" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="L3RMMEHooMvjJA7UHUvk-12" value="Gateway Microservice (port 8080)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="160" y="190" width="630" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lWMIxWkUatgDt7HEU0U--2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.467;entryY=-0.125;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="lWMIxWkUatgDt7HEU0U--1" target="L3RMMEHooMvjJA7UHUvk-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lWMIxWkUatgDt7HEU0U--1" value="Client" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;html=1;outlineConnect=0;labelPosition=center;align=center;" vertex="1" parent="1">
+          <mxGeometry x="440" y="30" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lWMIxWkUatgDt7HEU0U--3" value="Tokio Microservice&lt;br&gt;(port 8082)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="410" y="330" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lWMIxWkUatgDt7HEU0U--4" value="Berlin Microservice&lt;br&gt;(port 8081)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="220" y="330" width="130" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
