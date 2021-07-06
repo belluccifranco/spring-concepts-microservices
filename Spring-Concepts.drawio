@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-06-30T20:08:40.687Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36" etag="_-8BbzlRdkXLhhvmdF1z" version="14.8.0" type="github">
+<mxfile host="app.diagrams.net" modified="2021-07-06T18:44:46.603Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" etag="hv9Y7LhCOJeZnkNN-YuT" version="14.8.3" type="github">
   <diagram id="KAYoFOVoinrggncDsqFn" name="Microservices">
     <mxGraphModel dx="1550" dy="888" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -57,6 +57,18 @@
         </mxCell>
         <mxCell id="L3RMMEHooMvjJA7UHUvk-12" value="Gateway Microservice (port 8080)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="160" y="190" width="630" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lWMIxWkUatgDt7HEU0U--2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.467;entryY=-0.125;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="lWMIxWkUatgDt7HEU0U--1" target="L3RMMEHooMvjJA7UHUvk-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lWMIxWkUatgDt7HEU0U--1" value="Client" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;html=1;outlineConnect=0;labelPosition=center;align=center;" vertex="1" parent="1">
+          <mxGeometry x="440" y="30" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lWMIxWkUatgDt7HEU0U--3" value="Tokio Microservice&lt;br&gt;(port 8082)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="410" y="330" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lWMIxWkUatgDt7HEU0U--4" value="Berlin Microservice&lt;br&gt;(port 8081)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="220" y="330" width="130" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
