@@ -12,11 +12,11 @@ spring:
           uri: lb://register-microservice
           predicates:
             - Path=/register/**
-        - id: berlin-microservice
-          uri: lb://berlin-microservice
+        - id: user-microservice
+          uri: lb://user-microservice
           predicates:
-            - Path=/berlin/**
-        - id: tokio-microservice
-          uri: lb://tokio-microservice
+            - Path=/user/**
+        - id: order-microservice
+          uri: lb://order-microservice
           predicates:
-            - Path=/tokio/**
+            - Path=/order/**

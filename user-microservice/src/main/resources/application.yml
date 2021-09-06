@@ -1,0 +1,11 @@
+server:
+  port: 8086
+  servlet:
+    context-path: /user
+
+spring:
+  application:
+    name: user-microservice
+  data:
+    mongodb:
+      uri: mongodb+srv://test:${MONGODB_PASSWORD}@cluster01.aobx7.mongodb.net/userDatabase?retryWrites=true&w=majority
