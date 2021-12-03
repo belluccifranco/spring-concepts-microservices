@@ -1,6 +1,6 @@
-package com.springconcepts.ordermicroservice;
+package com.springconcepts.ordermicroservice.service;
 
-import com.springconcepts.ordermicroservice.OrderDTO;
+import com.springconcepts.ordermicroservice.model.OrderDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;

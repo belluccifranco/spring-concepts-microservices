@@ -12,9 +12,8 @@
 	<artifactId>order-microservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>order-microservice</name>
-	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>16</java.version>
+		<java.version>17</java.version>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
 	</properties>
 	<dependencies>

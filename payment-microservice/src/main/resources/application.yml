@@ -1,9 +1,9 @@
 server:
   port: 8085
-  servlet:
-    context-path: /payment
 
 spring:
+  webflux:
+    base-path: /payment
   application:
     name: payment-microservice
   datasource:

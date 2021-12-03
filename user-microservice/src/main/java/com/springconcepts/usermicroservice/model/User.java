@@ -1,4 +1,4 @@
-package com.springconcepts.usermicroservice;
+package com.springconcepts.usermicroservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

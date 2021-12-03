@@ -1,5 +1,7 @@
-package com.springconcepts.ordermicroservice;
+package com.springconcepts.ordermicroservice.controller;
 
+import com.springconcepts.ordermicroservice.model.OrderDTO;
+import com.springconcepts.ordermicroservice.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

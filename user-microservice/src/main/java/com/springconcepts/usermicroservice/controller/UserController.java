@@ -1,5 +1,7 @@
-package com.springconcepts.usermicroservice;
+package com.springconcepts.usermicroservice.controller;
 
+import com.springconcepts.usermicroservice.model.User;
+import com.springconcepts.usermicroservice.service.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,5 +1,7 @@
-package com.springconcepts.usermicroservice;
+package com.springconcepts.usermicroservice.service;
 
+import com.springconcepts.usermicroservice.model.User;
+import com.springconcepts.usermicroservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

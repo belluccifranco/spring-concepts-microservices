@@ -4,19 +4,3 @@ server:
 spring:
   application:
     name: gateway-microservice
-  cloud:
-    gateway:
-      discovery.locator.enabled: true
-      routes:
-        - id: register-microservice
-          uri: lb://register-microservice
-          predicates:
-            - Path=/register/**
-        - id: user-microservice
-          uri: lb://user-microservice
-          predicates:
-            - Path=/user/**
-        - id: order-microservice
-          uri: lb://order-microservice
-          predicates:
-            - Path=/order/**

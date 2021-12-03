@@ -1,4 +1,4 @@
-package com.springconcepts.ordermicroservice;
+package com.springconcepts.ordermicroservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class OrderDTO {
 
-    public Long orderId;
-    public LocalDateTime dateTime;
+    private Long orderId;
+    private LocalDateTime dateTime;
 
 }
