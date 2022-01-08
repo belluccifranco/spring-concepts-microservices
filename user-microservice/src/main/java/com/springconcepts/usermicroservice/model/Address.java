@@ -10,9 +10,7 @@ import lombok.NoArgsConstructor;
 public class Address {
 
     private AddressType addressType;
-
     private String streetName;
-
     private String streetNumber;
 
 }

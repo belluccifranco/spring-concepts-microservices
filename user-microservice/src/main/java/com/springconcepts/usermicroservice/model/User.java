@@ -14,13 +14,9 @@ import java.util.List;
 public class User {
 
     @Id
-    public String userId;
-
-    public String firstName;
-
-    public String lastName;
-
-    public LocalDate birthDate;
-
-    public List<Address> address;
+    private String userId;
+    private String firstName;
+    private String lastName;
+    private LocalDate birthDate;
+    private List<Address> address;
 }

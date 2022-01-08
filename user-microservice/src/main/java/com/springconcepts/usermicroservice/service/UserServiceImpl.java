@@ -1,31 +1,42 @@
 package com.springconcepts.usermicroservice.service;
 
 import com.springconcepts.usermicroservice.model.User;
+import com.springconcepts.usermicroservice.model.shared.NewOrderEvent;
 import com.springconcepts.usermicroservice.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class UserServiceImpl {
 
-    private final UserRepository userRepository;
+  private final UserRepository userRepository;
 
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+  @Autowired
+  public UserServiceImpl(UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
 
-    public List<User> findUsers() {
-        return userRepository.findAll();
-    }
+  public List<User> findUsers() {
+    return userRepository.findAll();
+  }
 
-    public User saveUser(User user) {
-        return userRepository.save(user);
-    }
+  public User saveUser(User user) {
+    return userRepository.save(user);
+  }
 
-    public User findUserByUserId(String userId) {
-        return userRepository.findById(userId).orElse(null);
-    }
+  public User findUserByUserId(String userId) {
+    return userRepository.findById(userId).orElse(null);
+  }
+
+  @KafkaListener(topics = "${kafka.topics.new-order-event-topic}")
+  public void pullNewOrderEvent(NewOrderEvent newOrderEvent) {
+    log.info("Listening topic: " + newOrderEvent.toString());
+    log.info(newOrderEvent.getClass().toString());
+  }
 }
