@@ -10,35 +10,35 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 import java.util.HashMap;
 
-// @Configuration
+@Configuration
 public class KafkaConfig {
 
-//  @Value("${CLOUDKARAFKA_SERVERS}")
-//  private String servers;
-//
-//  @Value("${CLOUDKARAFKA_USERNAME}")
-//  private String username;
-//
-//  @Value("${CLOUDKARAFKA_PASSWORD}")
-//  private String password;
-//
-//  @Bean
-//  public ProducerFactory<String, Object> newOrderEventProducerFactory() {
-//    var props = new HashMap<String, Object>();
-//    props.put("bootstrap.servers", servers);
-//    props.put("key.serializer", StringSerializer.class);
-//    props.put("value.serializer", JsonSerializer.class);
-//    props.put("security.protocol", "SASL_SSL");
-//    props.put("sasl.mechanism", "SCRAM-SHA-256");
-//    String jaasTemplate =
-//        "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
-//    String jaasCfg = String.format(jaasTemplate, username, password);
-//    props.put("sasl.jaas.config", jaasCfg);
-//    return new DefaultKafkaProducerFactory<>(props);
-//  }
-//
-//  @Bean
-//  public KafkaTemplate<String, Object> newOrderEventKafkaTemplate() {
-//    return new KafkaTemplate<>(newOrderEventProducerFactory());
-//  }
+  @Value("${CLOUDKARAFKA_SERVERS}")
+  private String servers;
+
+  @Value("${CLOUDKARAFKA_USERNAME}")
+  private String username;
+
+  @Value("${CLOUDKARAFKA_PASSWORD}")
+  private String password;
+
+  @Bean
+  public ProducerFactory<String, Object> producerFactory() {
+    var props = new HashMap<String, Object>();
+    props.put("bootstrap.servers", servers);
+    props.put("key.serializer", StringSerializer.class);
+    props.put("value.serializer", JsonSerializer.class);
+    props.put("security.protocol", "SASL_SSL");
+    props.put("sasl.mechanism", "SCRAM-SHA-256");
+    String jaasTemplate =
+        "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
+    String jaasCfg = String.format(jaasTemplate, username, password);
+    props.put("sasl.jaas.config", jaasCfg);
+    return new DefaultKafkaProducerFactory<>(props);
+  }
+
+  @Bean
+  public KafkaTemplate<String, Object> kafkaTemplate() {
+    return new KafkaTemplate<>(producerFactory());
+  }
 }

@@ -2,13 +2,12 @@ package com.springconcepts.usermicroservice.service;
 
 import com.springconcepts.usermicroservice.model.User;
 import com.springconcepts.usermicroservice.model.shared.NewOrderEvent;
+import com.springconcepts.usermicroservice.model.shared.OrderPaidEvent;
 import com.springconcepts.usermicroservice.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -34,9 +33,19 @@ public class UserServiceImpl {
     return userRepository.findById(userId).orElse(null);
   }
 
-  @KafkaListener(topics = "${kafka.topics.new-order-event-topic}")
+  @KafkaListener(
+      topics = "${kafka.topics.new-order-event-topic}",
+      containerFactory = "newOrderKafkaListenerContainerFactory")
   public void pullNewOrderEvent(NewOrderEvent newOrderEvent) {
     log.info("Listening topic: " + newOrderEvent.toString());
     log.info(newOrderEvent.getClass().toString());
+  }
+
+  @KafkaListener(
+      topics = "${kafka.topics.order-paid-event-topic}",
+      containerFactory = "orderPaidKafkaListenerContainerFactory")
+  public void pullOrderPaidEvent(OrderPaidEvent orderPaidEvent) {
+    log.info("Listening topic: " + orderPaidEvent.toString());
+    log.info(orderPaidEvent.getClass().toString());
   }
 }

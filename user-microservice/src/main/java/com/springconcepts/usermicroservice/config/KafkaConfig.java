@@ -1,6 +1,7 @@
 package com.springconcepts.usermicroservice.config;
 
 import com.springconcepts.usermicroservice.model.shared.NewOrderEvent;
+import com.springconcepts.usermicroservice.model.shared.OrderPaidEvent;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +25,7 @@ public class KafkaConfig {
   @Value("${CLOUDKARAFKA_PASSWORD}")
   private String password;
 
-  public Map<String, Object> consumerConfigs() {
+  public Map<String, Object> getKafkaProps() {
     var props = new HashMap<String, Object>();
     props.put("bootstrap.servers", servers);
     props.put("security.protocol", "SASL_SSL");
@@ -34,22 +35,36 @@ public class KafkaConfig {
     String jaasCfg = String.format(jaasTemplate, username, password);
     props.put("sasl.jaas.config", jaasCfg);
     props.put("group.id", username + "-consumers");
-    props.put("spring.json.trusted.packages", "*");
+    props.put("spring.json.trusted.packages", "com.springconcepts.usermicroservice.model.shared");
     props.put("spring.json.use.type.headers", "false");
     return props;
   }
 
   @Bean
-  public ConsumerFactory<String, NewOrderEvent> consumerFactory() {
+  public ConsumerFactory<String, NewOrderEvent> newOrderEventConsumerFactory() {
     return new DefaultKafkaConsumerFactory<>(
-        consumerConfigs(), new StringDeserializer(),
-            new JsonDeserializer<>(NewOrderEvent.class));
+        getKafkaProps(), new StringDeserializer(), new JsonDeserializer<>(NewOrderEvent.class));
   }
 
   @Bean
-  public ConcurrentKafkaListenerContainerFactory<String, NewOrderEvent> kafkaListenerContainerFactory() {
+  public ConcurrentKafkaListenerContainerFactory<String, NewOrderEvent>
+      newOrderKafkaListenerContainerFactory() {
     var factory = new ConcurrentKafkaListenerContainerFactory<String, NewOrderEvent>();
-    factory.setConsumerFactory(consumerFactory());
+    factory.setConsumerFactory(newOrderEventConsumerFactory());
+    return factory;
+  }
+
+  @Bean
+  public ConsumerFactory<String, OrderPaidEvent> orderPaidEventConsumerFactory() {
+    return new DefaultKafkaConsumerFactory<>(
+        getKafkaProps(), new StringDeserializer(), new JsonDeserializer<>(OrderPaidEvent.class));
+  }
+
+  @Bean
+  public ConcurrentKafkaListenerContainerFactory<String, OrderPaidEvent>
+      orderPaidKafkaListenerContainerFactory() {
+    var factory = new ConcurrentKafkaListenerContainerFactory<String, OrderPaidEvent>();
+    factory.setConsumerFactory(orderPaidEventConsumerFactory());
     return factory;
   }
 }

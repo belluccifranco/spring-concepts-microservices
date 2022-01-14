@@ -6,6 +6,7 @@ server:
 kafka:
   topics:
     new-order-event-topic: ${CLOUDKARAFKA_USERNAME}-new-order
+    order-paid-event-topic: ${CLOUDKARAFKA_USERNAME}-order-paid
 
 spring:
   application:
@@ -32,4 +33,12 @@ spring:
 #        spring:
 #          json:
 #            trusted:
-#              packages: "*"
+#              packages: com.springconcepts.usermicroservice.model.shared
+#            use:
+#              type:
+#                headers: false
+#            value:
+#              default:
+#                type: com.springconcepts.usermicroservice.model.shared.NewOrderEvent
+#            type:
+#              mapping: newOrderEvent:com.springconcepts.usermicroservice.model.shared.NewOrderEvent, orderPaidEvent:com.springconcepts.usermicroservice.model.shared.OrderPaidEvent
