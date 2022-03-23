@@ -1,6 +1,7 @@
-package com.springconcepts.usermicroservice.model.shared;
+package com.springconcepts.sharedmodel;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
@@ -8,9 +9,10 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class NewOrderEvent {
     private Long orderId;
     private LocalDateTime dateTime;
-    private Long userId;
+    private String userId;
     private Double amount;
 }

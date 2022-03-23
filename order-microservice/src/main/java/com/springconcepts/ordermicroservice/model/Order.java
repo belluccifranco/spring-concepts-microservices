@@ -1,12 +1,11 @@
 package com.springconcepts.ordermicroservice.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -15,14 +14,16 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Order implements Serializable {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long orderId;
 
   private LocalDateTime dateTime;
 
-  private Integer userId;
+  private String userId;
 
   private Double amount;
 }

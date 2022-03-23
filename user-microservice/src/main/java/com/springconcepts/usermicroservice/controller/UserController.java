@@ -1,7 +1,7 @@
 package com.springconcepts.usermicroservice.controller;
 
 import com.springconcepts.usermicroservice.model.User;
-import com.springconcepts.usermicroservice.service.UserServiceImpl;
+import com.springconcepts.usermicroservice.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +11,9 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
-    public UserController(UserServiceImpl userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 

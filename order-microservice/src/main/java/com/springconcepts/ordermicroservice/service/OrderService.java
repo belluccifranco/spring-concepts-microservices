@@ -1,8 +1,9 @@
 package com.springconcepts.ordermicroservice.service;
 
+import com.springconcepts.ordermicroservice.model.Order;
 import com.springconcepts.ordermicroservice.model.OrderDTO;
-import com.springconcepts.ordermicroservice.model.shared.NewOrderEvent;
-import com.springconcepts.ordermicroservice.model.shared.OrderPaidEvent;
+import com.springconcepts.sharedmodel.NewOrderEvent;
+import com.springconcepts.ordermicroservice.repository.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -14,31 +15,40 @@ import java.time.LocalDateTime;
 public class OrderService {
 
   private final KafkaTemplate<String, Object> kafkaTemplate;
+  private final OrderRepository orderRepository;
 
   @Value("${CLOUDKARAFKA_USERNAME}-new-order")
   private String newOrderKafkaTopic;
 
-  @Value("${CLOUDKARAFKA_USERNAME}-order-paid")
-  private String orderPaidKafkaTopic;
+//  @Value("${CLOUDKARAFKA_USERNAME}-order-paid")
+//  private String orderPaidKafkaTopic;
 
-  public OrderService(KafkaTemplate<String, Object> kafkaTemplate) {
+  public OrderService(KafkaTemplate<String, Object> kafkaTemplate,
+                      OrderRepository orderRepository) {
     this.kafkaTemplate = kafkaTemplate;
+    this.orderRepository = orderRepository;
   }
 
   public void createOrder(OrderDTO orderDTO) {
-    // convert to Order
+    Order savedOrder = orderRepository.save(convertToOrder(orderDTO));
+    kafkaTemplate.send(newOrderKafkaTopic, createNewOrderEvent(savedOrder));
+    log.info("Sent newOrderEvent to " + newOrderKafkaTopic);
+  }
 
-    // store in DB
+  private Order convertToOrder(OrderDTO orderDTO) {
+    return Order.builder()
+            .dateTime(LocalDateTime.now())
+            .userId(orderDTO.getUserId())
+            .amount(orderDTO.getAmount())
+            .build();
+  }
 
-    // push to the event bus
-
-    var newOrderEvent =
-        new NewOrderEvent(orderDTO.getOrderId(), LocalDateTime.now(), orderDTO.getUserId(), 5.0);
-    kafkaTemplate.send(newOrderKafkaTopic, newOrderEvent);
-    log.info("Sent sample message to " + newOrderKafkaTopic);
-
-    var orderPaidEvent = new OrderPaidEvent(1L, true);
-    kafkaTemplate.send(orderPaidKafkaTopic, orderPaidEvent);
-    log.info("Sent sample message to " + orderPaidKafkaTopic);
+  private NewOrderEvent createNewOrderEvent(Order order) {
+    return NewOrderEvent.builder()
+            .orderId(order.getOrderId())
+            .dateTime(order.getDateTime())
+            .userId(order.getUserId())
+            .amount(order.getAmount())
+            .build();
   }
 }

@@ -1,7 +1,7 @@
 package com.springconcepts.usermicroservice.config;
 
-import com.springconcepts.usermicroservice.model.shared.NewOrderEvent;
-import com.springconcepts.usermicroservice.model.shared.OrderPaidEvent;
+import com.springconcepts.sharedmodel.NewOrderEvent;
+import com.springconcepts.sharedmodel.OrderPaidEvent;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

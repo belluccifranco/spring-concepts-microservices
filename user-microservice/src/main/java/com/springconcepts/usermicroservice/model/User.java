@@ -19,4 +19,5 @@ public class User {
     private String lastName;
     private LocalDate birthDate;
     private List<Address> address;
+    private Boolean active;
 }
