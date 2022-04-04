@@ -5,8 +5,7 @@ server:
 
 kafka:
   topics:
-    new-order-event-topic: ${CLOUDKARAFKA_USERNAME}-new-order
-    order-paid-event-topic: ${CLOUDKARAFKA_USERNAME}-order-paid
+    orders: ${CLOUDKARAFKA_USERNAME}-orders
 
 spring:
   application:

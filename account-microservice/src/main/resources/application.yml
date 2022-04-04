@@ -1,0 +1,24 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /account
+
+spring:
+  application:
+    name: account-microservice
+
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+      enabled: true

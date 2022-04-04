@@ -1,13 +1,9 @@
 package com.springconcepts.usermicroservice.service;
 
-import com.springconcepts.usermicroservice.exception.ServiceException;
 import com.springconcepts.usermicroservice.model.User;
 import com.springconcepts.usermicroservice.repository.UserRepository;
-import com.springconcepts.sharedmodel.NewOrderEvent;
-import com.springconcepts.sharedmodel.OrderPaidEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -34,25 +30,11 @@ public class UserService {
     return userRepository.findById(userId).orElse(null);
   }
 
-  @KafkaListener(
-      topics = "${kafka.topics.new-order-event-topic}",
-      containerFactory = "newOrderKafkaListenerContainerFactory")
-  public void pullNewOrderEvent(NewOrderEvent newOrderEvent) {
-    //TODO check user
-    if (findUserByUserId(newOrderEvent.getUserId()) == null) {
-      //TODO push invalidUserEvent
-      throw new ServiceException("User not valid!");
+  public boolean isValidUser(String userId) {
+    if (userId != null) {
+      User user = findUserByUserId(userId);
+      return user != null && user.getActive() != null && user.getActive();
     }
-    // Add kafka topic
-    
-    //TODO push orderCheckedEvent
-    log.info("Listening topic: " + newOrderEvent.toString());
-  }
-
-  @KafkaListener(
-      topics = "${kafka.topics.order-paid-event-topic}",
-      containerFactory = "orderPaidKafkaListenerContainerFactory")
-  public void pullOrderPaidEvent(OrderPaidEvent orderPaidEvent) {
-    log.info("Listening topic: " + orderPaidEvent.toString());
+    return false;
   }
 }
