@@ -1,4 +1,4 @@
-package com.springconcepts.usermicroservice.config;
+package com.springconcepts.accountmicroservice.config;
 
 import com.springconcepts.sharedmodel.OrderEvent;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -62,5 +62,4 @@ public class KafkaConfig {
   public KafkaTemplate<String, Object> kafkaTemplate() {
     return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(getKafkaProps()));
   }
-
 }

@@ -1,6 +1,7 @@
 package com.springconcepts.usermicroservice.controller;
 
 import com.springconcepts.usermicroservice.model.User;
+import com.springconcepts.usermicroservice.model.UserDTO;
 import com.springconcepts.usermicroservice.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<User> saveUser(@RequestBody User user) {
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+    public ResponseEntity<User> saveUser(@RequestBody UserDTO userDTO) {
+        return new ResponseEntity<>(userService.saveUser(userDTO), HttpStatus.CREATED);
     }
 }

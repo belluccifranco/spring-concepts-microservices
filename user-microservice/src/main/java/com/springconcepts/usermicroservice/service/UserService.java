@@ -1,6 +1,7 @@
 package com.springconcepts.usermicroservice.service;
 
 import com.springconcepts.usermicroservice.model.User;
+import com.springconcepts.usermicroservice.model.UserDTO;
 import com.springconcepts.usermicroservice.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,18 @@ public class UserService {
     return userRepository.findAll();
   }
 
-  public User saveUser(User user) {
-    return userRepository.save(user);
+  public User saveUser(UserDTO userDTO) {
+    return userRepository.save(mapToUser(userDTO));
+  }
+
+  private User mapToUser(UserDTO userDTO) {
+    return User.builder()
+            .firstName(userDTO.getFirstName())
+            .lastName(userDTO.getLastName())
+            .birthDate(userDTO.getBirthDate())
+            .address(userDTO.getAddress())
+            .active(true)
+            .build();
   }
 
   public User findUserByUserId(String userId) {

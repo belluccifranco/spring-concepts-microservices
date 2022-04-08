@@ -1,9 +1,12 @@
-package com.springconcepts.ordermicroservice.messaging;
+package com.springconcepts.accountmicroservice.messaging;
 
 import com.springconcepts.sharedmodel.OrderEvent;
+import com.springconcepts.sharedmodel.OrderState;
+import com.springconcepts.accountmicroservice.service.AccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +15,24 @@ import org.springframework.stereotype.Service;
 public class OrderEventHandler {
 
     private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final AccountService accountService;
 
     @Value("${CLOUDKARAFKA_USERNAME}-orders")
     private String ordersKafkaTopic;
 
     @Autowired
-    public OrderEventHandler(KafkaTemplate<String, Object> kafkaTemplate) {
+    public OrderEventHandler(KafkaTemplate<String, Object> kafkaTemplate, AccountService accountService) {
         this.kafkaTemplate = kafkaTemplate;
+        this.accountService = accountService;
+    }
+
+    @KafkaListener(
+            groupId = "account-consumers",
+            topics = "${kafka.topics.orders}",
+            containerFactory = "newOrderKafkaListenerContainerFactory")
+    public void consumeOrderEvent(OrderEvent orderEvent) {
+        log.info("Listening topic: " + orderEvent);
+
     }
 
     public void publishOrderEvent(OrderEvent orderEvent) {

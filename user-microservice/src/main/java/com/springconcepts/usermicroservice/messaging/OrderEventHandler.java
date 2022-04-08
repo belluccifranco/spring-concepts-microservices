@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class UserEventHandler {
+public class OrderEventHandler {
 
   private final KafkaTemplate<String, Object> kafkaTemplate;
   private final UserService userService;
@@ -21,7 +21,7 @@ public class UserEventHandler {
   private String ordersKafkaTopic;
 
   @Autowired
-  public UserEventHandler(KafkaTemplate<String, Object> kafkaTemplate, UserService userService) {
+  public OrderEventHandler(KafkaTemplate<String, Object> kafkaTemplate, UserService userService) {
     this.kafkaTemplate = kafkaTemplate;
     this.userService = userService;
   }
@@ -31,8 +31,8 @@ public class UserEventHandler {
       topics = "${kafka.topics.orders}",
       containerFactory = "newOrderKafkaListenerContainerFactory")
   public void consumeOrderEvent(OrderEvent orderEvent) {
+    log.info("Listening topic: " + orderEvent);
     if (orderEvent.getOrderState() == OrderState.ORDER_NEW) {
-      log.info("Listening topic: " + orderEvent);
       if (userService.isValidUser(orderEvent.getUserId())) {
         orderEvent.setOrderState(OrderState.ORDER_CHECKED);
       } else {
@@ -43,7 +43,7 @@ public class UserEventHandler {
   }
 
   public void publishOrderEvent(OrderEvent orderEvent) {
+    log.info("Sending OrderEvent to " + ordersKafkaTopic);
     kafkaTemplate.send(ordersKafkaTopic, orderEvent);
-    log.info("Sent OrderEvent to " + ordersKafkaTopic);
   }
 }

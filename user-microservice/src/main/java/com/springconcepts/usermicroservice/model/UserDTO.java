@@ -1,25 +1,24 @@
 package com.springconcepts.usermicroservice.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class User {
+public class UserDTO {
 
-    @Id
-    private String userId;
+    @NotNull
     private String firstName;
+
+    @NotNull
     private String lastName;
+
     private LocalDate birthDate;
+
     private List<Address> address;
-    private Boolean active;
 }
