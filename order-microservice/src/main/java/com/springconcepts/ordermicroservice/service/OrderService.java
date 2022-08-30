@@ -11,6 +11,8 @@ import com.springconcepts.sharedmodel.OrderState;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Service
@@ -41,23 +43,23 @@ public class OrderService {
             .build();
   }
 
-  private Double applyConversion(Currency from, Currency to, Double amount) {
+  private BigDecimal applyConversion(Currency from, Currency to, BigDecimal amount) {
     return switch (from) {
       case EUR -> switch (to) {
-        case USD -> amount * 1.1;
-        case BTC -> amount * 1.5;
+        case USD -> amount.multiply(new BigDecimal("1.1"));
+        case BTC -> amount.multiply(new BigDecimal("1.5"));
         default -> throw new BusinessException(INVALID_CONVERSION_PAIR_MESSAGE);
       };
 
       case USD -> switch (to) {
-        case EUR -> amount * 1.1;
-        case BTC -> amount * 1.6;
+        case EUR -> amount.multiply(new BigDecimal("1.1"));
+        case BTC -> amount.multiply(new BigDecimal("1.6"));
         default -> throw new BusinessException(INVALID_CONVERSION_PAIR_MESSAGE);
       };
 
       case BTC -> switch (to) {
-        case EUR -> amount * 1.5;
-        case USD -> amount * 1.6;
+        case EUR -> amount.multiply(new BigDecimal("1.5"));
+        case USD -> amount.multiply(new BigDecimal("1.6"));
         default -> throw new BusinessException(INVALID_CONVERSION_PAIR_MESSAGE);
       };
     };

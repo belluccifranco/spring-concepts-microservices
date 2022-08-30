@@ -1,7 +1,8 @@
 server:
   port: 8086
-  servlet:
-    context-path: /user
+# DOESN'T WORK WELL WITH WEBFLUX
+#  servlet:
+#    context-path: /user
 
 kafka:
   topics:

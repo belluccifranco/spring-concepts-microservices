@@ -3,6 +3,10 @@ server:
   servlet:
     context-path: /account
 
+kafka:
+  topics:
+    orders: ${CLOUDKARAFKA_USERNAME}-orders
+
 spring:
   application:
     name: account-microservice

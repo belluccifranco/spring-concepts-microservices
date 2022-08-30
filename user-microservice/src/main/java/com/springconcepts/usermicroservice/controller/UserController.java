@@ -18,17 +18,17 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/user")
     public ResponseEntity<List<User>> getUsers() {
         return new ResponseEntity<>(userService.findUsers(), HttpStatus.OK);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable String userId) {
         return new ResponseEntity<>(userService.findUserByUserId(userId), HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @PostMapping("/user")
     public ResponseEntity<User> saveUser(@RequestBody UserDTO userDTO) {
         return new ResponseEntity<>(userService.saveUser(userDTO), HttpStatus.CREATED);
     }

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import com.springconcepts.sharedmodel.Currency;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
@@ -22,5 +23,5 @@ public class OrderDTO {
   private Currency pairTo;
 
   @PositiveOrZero
-  private Double amount;
+  private BigDecimal amount;
 }

@@ -29,10 +29,14 @@ public class OrderEventHandler {
     @KafkaListener(
             groupId = "account-consumers",
             topics = "${kafka.topics.orders}",
-            containerFactory = "newOrderKafkaListenerContainerFactory")
+            containerFactory = "orderKafkaListenerContainerFactory")
     public void consumeOrderEvent(OrderEvent orderEvent) {
         log.info("Listening topic: " + orderEvent);
-
+        if (orderEvent.getOrderState() == OrderState.ORDER_CHECKED) {
+            accountService.updateBalance(orderEvent.getUserId(), orderEvent.getAmount());
+            orderEvent.setOrderState(OrderState.ORDER_DONE);
+            publishOrderEvent(orderEvent);
+        }
     }
 
     public void publishOrderEvent(OrderEvent orderEvent) {

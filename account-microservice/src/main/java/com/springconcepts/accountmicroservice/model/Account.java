@@ -1,31 +1,27 @@
-package com.springconcepts.ordermicroservice.model;
+package com.springconcepts.accountmicroservice.model;
 
-import com.springconcepts.sharedmodel.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "accounts")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Order {
+public class Account {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long orderId;
-
-  private LocalDateTime dateTime;
+  private Long accountId;
 
   private String userId;
 
-  private Currency currency;
-
-  private BigDecimal amount;
+  @PositiveOrZero
+  private BigDecimal balance;
 }

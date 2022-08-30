@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,5 +17,5 @@ public class OrderEvent {
     private OrderState orderState;
     private String userId;
     private Currency currency;
-    private Double amount;
+    private BigDecimal amount;
 }

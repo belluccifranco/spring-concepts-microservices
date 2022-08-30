@@ -1,7 +1,12 @@
 server:
   port: 8088
-  servlet:
-    context-path: /order
+# DOESN'T WORK WELL WITH WEBFLUX
+#  servlet:
+#    context-path: /order
+
+kafka:
+  topics:
+    orders: ${CLOUDKARAFKA_USERNAME}-orders
 
 spring:
   application:

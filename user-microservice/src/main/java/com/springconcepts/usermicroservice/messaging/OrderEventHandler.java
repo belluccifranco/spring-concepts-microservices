@@ -29,7 +29,7 @@ public class OrderEventHandler {
   @KafkaListener(
       groupId = "user-consumers",
       topics = "${kafka.topics.orders}",
-      containerFactory = "newOrderKafkaListenerContainerFactory")
+      containerFactory = "orderKafkaListenerContainerFactory")
   public void consumeOrderEvent(OrderEvent orderEvent) {
     log.info("Listening topic: " + orderEvent);
     if (orderEvent.getOrderState() == OrderState.ORDER_NEW) {
