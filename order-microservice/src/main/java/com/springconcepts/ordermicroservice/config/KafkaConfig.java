@@ -40,6 +40,8 @@ public class KafkaConfig {
         "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
     String jaasCfg = String.format(jaasTemplate, username, password);
     props.put("sasl.jaas.config", jaasCfg);
+    //props.put("auto.offset.reset", "earliest");
+    props.put("enable.idempotence" , "false");
     return props;
   }
 

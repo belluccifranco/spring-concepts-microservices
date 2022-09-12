@@ -37,24 +37,25 @@ public class KafkaConfig {
     props.put("security.protocol", "SASL_SSL");
     props.put("sasl.mechanism", "SCRAM-SHA-256");
     String jaasTemplate =
-        "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
+            "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
     String jaasCfg = String.format(jaasTemplate, username, password);
     props.put("sasl.jaas.config", jaasCfg);
-    props.put("auto.offset.reset", "earliest");
+    //props.put("auto.offset.reset", "earliest");
+    props.put("enable.idempotence" , "false");
     return props;
   }
 
   @Bean
-  public ConsumerFactory<String, OrderEvent> newOrderEventConsumerFactory() {
+  public ConsumerFactory<String, OrderEvent> orderEventConsumerFactory() {
     return new DefaultKafkaConsumerFactory<>(
         getKafkaProps(), new StringDeserializer(), new JsonDeserializer<>(OrderEvent.class));
   }
 
   @Bean
   public ConcurrentKafkaListenerContainerFactory<String, OrderEvent>
-      orderKafkaListenerContainerFactory() {
+  orderKafkaListenerContainerFactory() {
     var factory = new ConcurrentKafkaListenerContainerFactory<String, OrderEvent>();
-    factory.setConsumerFactory(newOrderEventConsumerFactory());
+    factory.setConsumerFactory(orderEventConsumerFactory());
     return factory;
   }
 

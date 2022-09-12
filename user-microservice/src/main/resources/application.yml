@@ -1,8 +1,5 @@
 server:
   port: 8086
-# DOESN'T WORK WELL WITH WEBFLUX
-#  servlet:
-#    context-path: /user
 
 kafka:
   topics:
@@ -15,30 +12,3 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://test:${MONGODB_PASSWORD}@cluster01.aobx7.mongodb.net/userDatabase?retryWrites=true&w=majority
-
-#  kafka:
-#    bootstrap-servers: ${CLOUDKARAFKA_SERVERS}
-#    properties:
-#      security:
-#        protocol: SASL_SSL
-#      sasl:
-#        mechanism: SCRAM-SHA-256
-#        jaas:
-#          config: org.apache.kafka.common.security.scram.ScramLoginModule required username="${CLOUDKARAFKA_USERNAME}" password="${CLOUDKARAFKA_PASSWORD}";
-#    consumer:
-#      group-id: ${CLOUDKARAFKA_USERNAME}-consumers
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-#      properties:
-#        spring:
-#          json:
-#            trusted:
-#              packages: com.springconcepts.usermicroservice.model.shared
-#            use:
-#              type:
-#                headers: false
-#            value:
-#              default:
-#                type: com.springconcepts.usermicroservice.model.shared.NewOrderEvent
-#            type:
-#              mapping: newOrderEvent:com.springconcepts.usermicroservice.model.shared.NewOrderEvent, orderPaidEvent:com.springconcepts.usermicroservice.model.shared.OrderPaidEvent

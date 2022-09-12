@@ -1,8 +1,5 @@
 server:
   port: 8088
-# DOESN'T WORK WELL WITH WEBFLUX
-#  servlet:
-#    context-path: /order
 
 kafka:
   topics:
@@ -14,7 +11,7 @@ spring:
 
   datasource:
     driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:orders
     username: sa
     password: password
 
@@ -27,16 +24,3 @@ spring:
   h2:
     console:
       enabled: true
-
-#  kafka:
-#    bootstrap-servers: ${CLOUDKARAFKA_SERVERS}
-#    properties:
-#      security:
-#        protocol: SASL_SSL
-#      sasl:
-#        mechanism: SCRAM-SHA-256
-#        jaas:
-#          config: org.apache.kafka.common.security.scram.ScramLoginModule required username="${CLOUDKARAFKA_USERNAME}" password="${CLOUDKARAFKA_PASSWORD}";
-#    producer:
-#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

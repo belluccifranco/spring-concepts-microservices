@@ -8,20 +8,23 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 @Slf4j
 public class OrderEventHandler {
 
     private final KafkaTemplate<String, Object> kafkaTemplate;
-    private OrderEventListener orderEventListener;
+    private final TaskHolder taskHolder;
 
     @Value("${CLOUDKARAFKA_USERNAME}-orders")
     private String ordersKafkaTopic;
 
     @Autowired
-    public OrderEventHandler(KafkaTemplate<String, Object> kafkaTemplate) {
+    public OrderEventHandler(KafkaTemplate<String, Object> kafkaTemplate,
+                             TaskHolder taskHolder) {
         this.kafkaTemplate = kafkaTemplate;
+        this.taskHolder = taskHolder;
     }
 
     public void publishOrderEvent(OrderEvent orderEvent) {
@@ -29,32 +32,16 @@ public class OrderEventHandler {
         kafkaTemplate.send(ordersKafkaTopic, orderEvent);
     }
 
-    //**************************************************************
-    public void register(OrderEventListener orderEventListener) {
-        this.orderEventListener = orderEventListener;
-    }
-
-    public void onEvent(OrderEvent orderEvent) {
-        if (orderEventListener != null) {
-            orderEventListener.onData(orderEvent);
-        }
-    }
-
-    public void onComplete() {
-        if (orderEventListener != null) {
-            orderEventListener.processComplete();
-        }
-    }
-    //**************************************************************
-
     @KafkaListener(
             groupId = "order-consumers",
             topics = "${kafka.topics.orders}",
             containerFactory = "orderKafkaListenerContainerFactory")
     public void consumeOrderEvent(OrderEvent orderEvent) {
         log.info("Listening topic: " + orderEvent);
-        //if (orderEvent.getOrderState() == OrderState.ORDER_DONE) {
-            onEvent(orderEvent);
-        //}
+        if (orderEvent.getOrderState() == OrderState.ORDER_DONE) {
+            taskHolder.remove(orderEvent.getEventTransactionId())
+                    .orElse(new CompletableFuture<>())
+                    .complete(orderEvent);
+        }
     }
 }

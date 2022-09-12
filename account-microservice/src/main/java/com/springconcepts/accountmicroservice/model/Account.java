@@ -9,7 +9,6 @@ import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "accounts")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

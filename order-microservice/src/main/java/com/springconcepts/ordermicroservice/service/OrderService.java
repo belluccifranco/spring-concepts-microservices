@@ -11,7 +11,6 @@ import com.springconcepts.sharedmodel.OrderState;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -31,7 +30,7 @@ public class OrderService {
 
   public void createOrder(OrderDTO orderDTO) {
     Order savedOrder = orderRepository.save(mapToOrder(orderDTO));
-    orderEventHandler.publishOrderEvent(createNewOrderEvent(savedOrder));
+    orderEventHandler.publishOrderEvent(createNewOrderEvent(savedOrder, orderDTO.getEventTransactionId()));
   }
 
   private Order mapToOrder(OrderDTO orderDTO) {
@@ -65,8 +64,9 @@ public class OrderService {
     };
   }
 
-  private OrderEvent createNewOrderEvent(Order order) {
+  private OrderEvent createNewOrderEvent(Order order, String eventTransactionId) {
     return OrderEvent.builder()
+            .eventTransactionId(eventTransactionId)
             .orderId(order.getOrderId())
             .dateTime(order.getDateTime())
             .orderState(OrderState.ORDER_NEW)

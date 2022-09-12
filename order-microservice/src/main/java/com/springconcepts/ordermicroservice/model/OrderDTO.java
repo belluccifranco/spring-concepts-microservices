@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class OrderDTO {
 
+  private String eventTransactionId;
+
   @NotNull
   private String userId;
 
