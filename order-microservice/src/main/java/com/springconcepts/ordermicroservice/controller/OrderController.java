@@ -32,7 +32,7 @@ public class OrderController {
 
     @PostMapping(value = "/order", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Mono<OrderEvent> createNewOrder(@Valid @RequestBody OrderDTO orderDTO) {
-        String eventTransactionId = UUID.randomUUID().toString();
+        var eventTransactionId = UUID.randomUUID().toString();
         orderDTO.setEventTransactionId(eventTransactionId);
         orderService.createOrder(orderDTO);
         var completableFuture = new CompletableFuture<OrderEvent>();

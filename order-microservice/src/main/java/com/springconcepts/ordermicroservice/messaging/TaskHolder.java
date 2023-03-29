@@ -9,13 +9,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class TaskHolder {
-    private final Map<String, CompletableFuture<OrderEvent>> taskHolder = new ConcurrentHashMap<>();
+
+    private final Map<String, CompletableFuture<OrderEvent>> mapHolder = new ConcurrentHashMap<>();
 
     public void pushTask(String transactionId, CompletableFuture<OrderEvent> task) {
-        taskHolder.put(transactionId, task);
+        mapHolder.put(transactionId, task);
     }
 
     public Optional<CompletableFuture<OrderEvent>> remove(String transactionId) {
-        return Optional.ofNullable(taskHolder.remove(transactionId));
+        return Optional.ofNullable(mapHolder.remove(transactionId));
     }
 }

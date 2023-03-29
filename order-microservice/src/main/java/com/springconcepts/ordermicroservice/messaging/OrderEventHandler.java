@@ -21,8 +21,7 @@ public class OrderEventHandler {
     private String ordersKafkaTopic;
 
     @Autowired
-    public OrderEventHandler(KafkaTemplate<String, Object> kafkaTemplate,
-                             TaskHolder taskHolder) {
+    public OrderEventHandler(KafkaTemplate<String, Object> kafkaTemplate, TaskHolder taskHolder) {
         this.kafkaTemplate = kafkaTemplate;
         this.taskHolder = taskHolder;
     }
