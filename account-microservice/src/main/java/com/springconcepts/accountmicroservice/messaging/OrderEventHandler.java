@@ -41,6 +41,6 @@ public class OrderEventHandler {
 
     public void publishOrderEvent(OrderEvent orderEvent) {
         log.info("Sending OrderEvent to " + ordersKafkaTopic);
-        kafkaTemplate.send(ordersKafkaTopic, orderEvent);
+        kafkaTemplate.send(ordersKafkaTopic, orderEvent.getUserId(), orderEvent);
     }
 }
