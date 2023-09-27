@@ -30,7 +30,7 @@ public class OrderController {
         this.taskHolder = taskHolder;
     }
 
-    @PostMapping(value = "/order", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @PostMapping(value = "/orders", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Mono<OrderEvent> createNewOrder(@Valid @RequestBody OrderDTO orderDTO) {
         var eventTransactionId = UUID.randomUUID().toString();
         orderDTO.setEventTransactionId(eventTransactionId);

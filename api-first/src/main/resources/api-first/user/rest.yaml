@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: User API
+  version: 1.0.0
+paths:
+  /users:
+    get:
+      tags:
+        - users
+      summary: Get a list of users
+      operationId: getUsers
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Create a new user
+      operationId: saveUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDTO'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /users/{userId}:
+    get:
+      summary: Get a user by ID
+      operationId: getUserById
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        address:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        active:
+          type: boolean
+    Address:
+      type: object
+      properties:
+        addressType:
+          $ref: '#/components/schemas/AddressType'
+        streetName:
+          type: string
+        streetNumber:
+          type: string
+    AddressType:
+      type: string
+      enum:
+        - HOME
+        - WORK
+    UserDTO:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        address:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+    AddressDTO:
+      type: object
+      properties:
+        addressType:
+          $ref: '#/components/schemas/AddressTypeDTO'
+        streetName:
+          type: string
+        streetNumber:
+          type: string
+    AddressTypeDTO:
+      type: string
+      enum:
+        - HOME
+        - WORK
